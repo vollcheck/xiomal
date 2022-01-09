@@ -2,4 +2,4 @@
 
 ### Description
 
-`xiomal` is a library that allows to transpile XML to Python-native data structures.
+`xiomal` is a study project that process (unfortunately) XML data from external API.
