@@ -1,1 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?><root><location><name>Warsaw</name><region></region><country>Poland</country><lat>52.25</lat><lon>21</lon><tz_id>Europe/Warsaw</tz_id><localtime_epoch>1641765743</localtime_epoch><localtime>2022-01-09 23:02</localtime></location><current><last_updated_epoch>1641764700</last_updated_epoch><last_updated>2022-01-09 22:45</last_updated><temp_c>-4</temp_c><temp_f>24.8</temp_f><is_day>0</is_day><condition><text>Clear</text><icon>//cdn.weatherapi.com/weather/64x64/night/113.png</icon><code>1000</code></condition><wind_mph>6.9</wind_mph><wind_kph>11.2</wind_kph><wind_degree>110</wind_degree><wind_dir>ESE</wind_dir><pressure_mb>1009</pressure_mb><pressure_in>29.8</pressure_in><precip_mm>0</precip_mm><precip_in>0</precip_in><humidity>93</humidity><cloud>0</cloud><feelslike_c>-6.8</feelslike_c><feelslike_f>19.7</feelslike_f><vis_km>9</vis_km><vis_miles>5</vis_miles><uv>1</uv><gust_mph>7.8</gust_mph><gust_kph>12.6</gust_kph><air_quality><co>527.4000244140625</co><no2>27.799999237060547</no2><o3>10.300000190734863</o3><so2>37.70000076293945</so2><pm2_5>29.700000762939453</pm2_5><pm10>39.400001525878906</pm10><us-epa-index>2</us-epa-index><gb-defra-index>3</gb-defra-index></air_quality></current></root>
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <location>
+    <name>Warsaw</name>
+    <region>
+    </region>
+    <country>
+    Poland</country>
+    <lat>52.25</lat>
+    <lon>21</lon>
+    <tz_id>Europe/Warsaw</tz_id>
+    <localtime_epoch>1641765743</localtime_epoch>
+    <localtime>2022-01-09 23:02</localtime>
+  </location>
+  <current>
+    <last_updated_epoch>1641764700</last_updated_epoch>
+    <last_updated>2022-01-09 22:45</last_updated>
+    <temp_c>-4</temp_c>
+    <temp_f>24.8</temp_f>
+    <is_day>0</is_day>
+    <condition>
+      <text>Clear</text>
+      <icon>//cdn.weatherapi.com/weather/64x64/night/113.png</icon>
+      <code>1000</code>
+    </condition>
+    <wind_mph>6.9</wind_mph>
+    <wind_kph>11.2</wind_kph>
+    <wind_degree>110</wind_degree>
+    <wind_dir>ESE</wind_dir>
+    <pressure_mb>1009</pressure_mb>
+    <pressure_in>29.8</pressure_in>
+    <precip_mm>0</precip_mm>
+    <precip_in>0</precip_in>
+    <humidity>93</humidity>
+    <cloud>0</cloud>
+    <feelslike_c>-6.8</feelslike_c>
+    <feelslike_f>19.7</feelslike_f>
+    <vis_km>9</vis_km>
+    <vis_miles>5</vis_miles>
+    <uv>1</uv>
+    <gust_mph>7.8</gust_mph>
+    <gust_kph>12.6</gust_kph>
+    <air_quality>
+      <co>527.4000244140625</co>
+      <no2>27.799999237060547</no2>
+      <o3>10.300000190734863</o3>
+      <so2>37.70000076293945</so2>
+      <pm2_5>29.700000762939453</pm2_5>
+      <pm10>39.400001525878906</pm10>
+      <us-epa-index>2</us-epa-index>
+      <gb-defra-index>3</gb-defra-index>
+    </air_quality>
+  </current>
+</root>
