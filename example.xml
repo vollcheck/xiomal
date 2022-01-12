@@ -2,10 +2,8 @@
 <root>
   <location>
     <name>Warsaw</name>
-    <region>
-    </region>
-    <country>
-    Poland</country>
+    <region></region>
+    <country>Poland</country>
     <lat>52.25</lat>
     <lon>21</lon>
     <tz_id>Europe/Warsaw</tz_id>

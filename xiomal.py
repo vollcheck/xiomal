@@ -1,40 +1,57 @@
-import argparse
 import xml.etree.ElementTree as ET
+from typing import List
 
+import click
 import requests
 
 from load_env import VARIABLES as V
 
-# TODO: 1. get env variable in for API key
-
-# Hard-coded for now
 API_KEY = V.get("API_KEY")
 
 
-def run(city: str):
+@click.command()
+@click.argument("city", type=str)
+def request(city: str) -> ET.Element:
+    tree = perform_request(city)
+    parsed_tree = parse_tree(tree)
+    raport(city, parsed_tree)
+
+
+def perform_request(city):
     url = f"http://api.weatherapi.com/v1/current.xml?key={API_KEY}&q={city}&aqi=no"
     response = requests.get(url)
     if response.status_code != 200:
-        print(response.status_code)
-        print("Something went wrong")
+        raise Exception(f"Something went wrong: {response.status_code}")
 
-    tree = ET.fromstring(response.text)
-
-    for child in tree:
-        print(child.tag)
+    return ET.fromstring(response.text)
 
 
-# todo: fix parser
-# todo: update readme
+def xget(element: ET.Element, path: List[str]) -> str:
+    for step in path:
+        element = element.find(step)
 
-parser = argparse.ArgumentParser(description='Receive weather information about given city.')
-
-parser.add_argument('city', type=str,
-                    help='City to request weather information about.')
-
-args = parser.parse_args()
-print(args.accumulate(args.integers))
+    return element.text
 
 
-city = "Warsaw"
-run(city)
+def parse_tree(tree: ET.Element) -> dict:
+    relevant = {
+        "Country": ["location", "country"],
+        "Local time": ["location", "localtime"],
+        "Air condition": ["current", "condition", "text"],
+        "Pressure": ["current", "pressure_mb"],
+        "Temperature (°C)": ["current", "temp_c"],
+        "Feels like temperature (°C)": ["current", "feelslike_c"],
+    }
+
+    return {k: xget(tree, v) for k, v in relevant.items()}
+
+
+def raport(city: str, parsed_tree: dict) -> None:
+    print(f"You've requested data for '{city}'")
+
+    for k, v in parsed_tree.items():
+        print(f"{k}: {v}")
+
+
+if __name__ == "__main__":
+    request()
