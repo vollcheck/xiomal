@@ -13,6 +13,8 @@ API_KEY = V.get("API_KEY")
 @click.argument("city", type=str)
 def request(city: str) -> ET.Element:
     tree = perform_request(city)
+    if not tree:
+        return
     parsed_tree = parse_tree(tree)
     raport(city, parsed_tree)
 
@@ -21,7 +23,8 @@ def perform_request(city):
     url = f"http://api.weatherapi.com/v1/current.xml?key={API_KEY}&q={city}&aqi=no"
     response = requests.get(url)
     if response.status_code != 200:
-        raise Exception(f"Something went wrong: {response.status_code}")
+        print(f"There is no city called {city}")
+        return
 
     return ET.fromstring(response.text)
 
@@ -43,7 +46,9 @@ def parse_tree(tree: ET.Element) -> dict:
         "Feels like temperature (°C)": ["current", "feelslike_c"],
     }
 
-    return {k: xget(tree, v) for k, v in relevant.items()}
+    data = {k: xget(tree, v) for k, v in relevant.items()}
+    data['Teperature (F)'] = (float(data['Temperature (°C)']) * 9/5) + 32
+    return data
 
 
 def raport(city: str, parsed_tree: dict) -> None:
